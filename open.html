@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Bhakti Link Redirect</title>
+  <script>
+    function redirect() {
+      const params = new URLSearchParams(window.location.search);
+      const data = params.get("data");
+
+      // Try opening the app using your custom URL scheme
+      window.location = "bhaktilink://session?data=" + encodeURIComponent(data);
+
+      // If the app isn't installed, after 1.5s redirect to App Store
+      setTimeout(function() {
+        window.location = "https://apps.apple.com/us/app/bhakti-link/id6751511923";
+      }, 1500);
+    }
+  </script>
+</head>
+<body onload="redirect()">
+  <p>Redirecting to Bhakti Link...</p>
+</body>
+</html>
